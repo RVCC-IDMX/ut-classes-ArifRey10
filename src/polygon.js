@@ -1,3 +1,5 @@
+/* eslint-disable no-self-assign */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-useless-constructor */
 /*
@@ -24,33 +26,34 @@
  * Polygon class
  * @class Polygon
  * @constructor Polygon constructor function
- * @param {array} sides - array of integer values describing the
+ * @param {array} sides - array of integer values describing the sides
  * @property {string} name - name of the polygon
  */
 class Polygon {
   constructor(sides) {
-    // write your code here
+    this.sides = sides;
+    this.name = 'Polygon';
   }
 
   /**
    * @returns {number} - number of sides
    */
   count() {
-    // write your code here
+    return this.sides.length;
   }
 
   /**
    * @returns {number} - value of the perimeter (sum of all sides)
    */
   perimeter() {
-    // write your code here
+    return this.sides.reduce((acc, side) => acc + side, 0);
   }
 
   /**
    * @returns {string} - name of the polygon
    */
   sayName() {
-    // write your code here
+    return this.name;
   }
 }
 

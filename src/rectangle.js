@@ -41,30 +41,19 @@
 // const { Polygon } = require('./polygon');
 
 /**
- * rectangle class
- * @class rectangle class extends Polygon
- * @constructor rectangle constructor function
- * @param {array} sides
- * @property {string} name
- * @property {number} height
- * @property {number} width
+ * Rectangle class
+ * @class Rectangle class extends Polygon
+ * @constructor Rectangle constructor function
+ * @param {number} height
+ * @param {number} width
+ * must use super() to call the parent class constructor
  */
+const { Polygon } = require('./polygon');
 
 class Rectangle extends Polygon {
-  /**
-   * @constructor
-   * @param {number} height
-   * @param {number} width
-   * must use super() to call the parent class constructor
-   * https://mzl.la/2Z5y8my
-   * hint: this constructor gets height and width as parameters
-   * and must call the parent class constructor which takes
-   * an array of 4 numbers representing the 4 sides of the rectangle
-   * You'll need to use the height and width parameters to create
-   * the array of 4 numbers
-   */
   constructor(height, width) {
-    // write your code here
+    super([height, width, height, width]);
+    this.name = 'Rectangle';
   }
 
   /**
@@ -72,17 +61,20 @@ class Rectangle extends Polygon {
    * @returns {boolean} true if the height and width are both a number > 0
    */
   isValid() {
-    // write your code here
+    return typeof this.sides[0] === 'number' && this.sides[0] > 0
+      && typeof this.sides[1] === 'number' && this.sides[1] > 0;
   }
 
   /**
    * @method area - return the area of the rectangle
    * @returns {number} the area of the rectangle if
-   * the height and width are a number > 0
-   * otherwise return 0
+   * the height and width are a number > 0, otherwise return 0
    */
   area() {
-    // write your code here
+    if (this.isValid()) {
+      return this.sides[0] * this.sides[1];
+    }
+    return 0;
   }
 }
 
